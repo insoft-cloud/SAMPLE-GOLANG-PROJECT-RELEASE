@@ -1,0 +1,14 @@
+---
+name: swagger
+
+templates:
+  bpm.yml.erb: config/bpm.yml
+  swagger-start.sh: bin/swagger-start.sh
+  config.yml.erb: config/config.yml
+packages:
+  - golang
+  - paas-ta-portal-api-v3
+
+properties:
+  cf_api_domain:
+  eureka_url:

@@ -1,0 +1,43 @@
+name: api-v3
+
+update:
+  canaries: 1                            # canary 인스턴스 수(필수)
+  canary_watch_time: 120000              # canary 인스턴스가 수행하기 위한 대기 시간(필수)
+  update_watch_time: 120000              # non-canary 인스턴스가 수행하기 위한 대기 시간(필수)
+  max_in_flight: 8                       # non-canary 인스턴스가 병렬로 update 하는 최대 개수(필수)
+
+addons:
+- name: bpm
+  jobs:
+  - name: bpm
+    release: bpm
+
+
+stemcells:
+- alias: default
+  os: ubuntu-xenial
+  version: latest
+
+releases:
+- name: bpm
+  version: latest
+- name: api-v3                  # 서비스 릴리즈 이름(필수) bosh releases로 확인 가능
+  version: latest                                     # 서비스 릴리즈 버전(필수):latest 시 업로드된 서비스 릴리즈 최신버전
+
+instance_groups:
+- name: paas-ta-portal-api-v3                          #작업 이름(필수)
+  azs: [z1, z2, z3, z4, z5]
+  instances: 1                            # job 인스턴스 수(필수)
+  vm_type: small
+  stemcell: default
+  networks:                               # 네트워크 구성정보
+  - name: default                         # Networks block에서 선언한 network 이름(필수)
+  jobs:
+  - name: paas-ta-portal-api-v3
+    release: api-v3
+  - name: swagger
+    release: api-v3
+  syslog_aggregator: null
+  properties:
+    cf_api_domain: https://api.paas.smes-tipa.go.kr
+    eureka_url: 172.30.200.31

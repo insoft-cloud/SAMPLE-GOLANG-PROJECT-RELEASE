@@ -1,0 +1,5 @@
+check process swagger
+  with pidfile /var/vcap/sys/run/bpm/swagger/swagger.pid
+  start program "/var/vcap/jobs/bpm/bin/bpm start swagger"
+  stop program "/var/vcap/jobs/bpm/bin/bpm stop swagger"
+  group vcap

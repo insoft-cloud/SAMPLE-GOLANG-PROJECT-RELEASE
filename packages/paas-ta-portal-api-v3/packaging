@@ -1,0 +1,5 @@
+set -e
+
+mv api-v3 ${BOSH_INSTALL_TARGET}
+cp api-config/config.go ${BOSH_INSTALL_TARGET}/api-v3/config/config.go
+mv api-v3-modules ${BOSH_INSTALL_TARGET}

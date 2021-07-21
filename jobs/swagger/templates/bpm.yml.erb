@@ -1,0 +1,12 @@
+---
+processes:
+- name: swagger
+  executable: /var/vcap/packages/paas-ta-portal-api-v3/api-v3/swagger
+  env:
+    GOROOT: /var/vcap/packages/golang
+    GOPATH: /var/vcap/packages/golang
+    GOMODCACHE: /var/vcap/packages/paas-ta-portal-api-v3/api-v3-modules
+    GOCACHE: /var/vcap/packages/.cache/go-build
+    GOENV: /var/vcap/packages/.cache/go/env
+  hooks:
+    pre_start: /var/vcap/jobs/swagger/bin/swagger-start.sh

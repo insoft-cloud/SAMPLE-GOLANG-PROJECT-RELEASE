@@ -1,0 +1,13 @@
+---
+processes:
+- name: paas-ta-portal-api-v3
+  executable: /var/vcap/packages/paas-ta-portal-api-v3/api-v3/main
+  env:
+    GOROOT: /var/vcap/packages/golang 
+    GOPATH: /var/vcap/packages/golang
+    GOMODCACHE: /var/vcap/packages/paas-ta-portal-api-v3/api-v3-modules
+    GOCACHE: /var/vcap/packages/.cache/go-build
+    GOENV: /var/vcap/packages/.cache/go/env
+  hooks:
+    pre_start: /var/vcap/jobs/paas-ta-portal-api-v3/bin/main-start.sh
+

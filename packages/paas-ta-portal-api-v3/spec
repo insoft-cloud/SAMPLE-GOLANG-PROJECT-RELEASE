@@ -1,0 +1,10 @@
+---
+name: paas-ta-portal-api-v3
+
+dependencies: 
+  - golang
+
+files:
+  - api-v3/**/*
+  - api-config/**/*
+  - api-v3-modules/**/*

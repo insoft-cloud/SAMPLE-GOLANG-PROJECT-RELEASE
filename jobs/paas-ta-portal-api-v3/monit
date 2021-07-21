@@ -1,0 +1,5 @@
+check process paas-ta-portal-api-v3
+  with pidfile /var/vcap/sys/run/bpm/paas-ta-portal-api-v3/paas-ta-portal-api-v3.pid
+  start program "/var/vcap/jobs/bpm/bin/bpm start paas-ta-portal-api-v3"
+  stop program "/var/vcap/jobs/bpm/bin/bpm stop paas-ta-portal-api-v3"
+  group vcap
